@@ -8,8 +8,8 @@ pipeline {
 
             steps {
                 withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
-                    sh 'docker build -t congnt/docker-laravel .'
-                    sh 'docker push congnt/docker-laravel'
+                    sh 'docker build -t thecong96/docker-laravel .'
+                    sh 'docker push thecong96/docker-laravel'
                 }
             }
         }
@@ -25,7 +25,7 @@ pipeline {
     post {
         // Clean after build
         always {
-            cleanWs()
+            sh 'docker logout'
         }
     }
 }
