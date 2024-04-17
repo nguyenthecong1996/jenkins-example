@@ -17,7 +17,7 @@ pipeline {
         stage('Deploy MySQL to DEV') {
             steps {
                 echo 'Deploying and cleaning'
-                sh 'docker-compose build && docker-compose up -d'
+            
             }
         }
  
