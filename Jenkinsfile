@@ -25,7 +25,7 @@ pipeline {
     post {
         // Clean after build
         always {
-            sh 'docker logout'
+            cleanWs()
         }
     }
 }
