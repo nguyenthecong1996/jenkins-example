@@ -4,10 +4,7 @@ pipeline {
     stages {
         stage('Packaging/Pushing imagae') {
             steps {
-                withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
-                    sh 'docker build -t thecong96/docker-laravel .'
-                    sh 'docker push thecong96/docker-laravel'
-                }
+                echo "hello"
             }
         }
 
