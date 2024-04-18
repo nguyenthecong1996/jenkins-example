@@ -4,15 +4,18 @@ pipeline {
     stages {
         stage('Packaging/Pushing imagae') {
             steps {
-                echo "hello"
+                withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
+                    sh 'docker build -t thecong96/docker-laravel .'
+                    sh 'docker push thecong96/docker-laravel'
+                }
             }
         }
 
-        // stage('Deploy MySQL to DEV') {
-        //     steps {
-        //         echo 'Deploying and cleaning'
-        //     }
-        // }
+        stage('Deploy MySQL to DEV') {
+            steps {
+                echo 'Deploying and cleaning'
+            }
+        }
  
     }
     post {
