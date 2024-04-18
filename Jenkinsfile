@@ -2,7 +2,6 @@ pipeline {
 
     agent any
     stages {
-
         stage('Packaging/Pushing imagae') {
             steps {
                 withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
@@ -12,17 +11,18 @@ pipeline {
             }
         }
 
-        stage('Deploy MySQL to DEV') {
-            steps {
-                echo 'Deploying and cleaning'
-            }
-        }
+        // stage('Deploy MySQL to DEV') {
+        //     steps {
+        //         echo 'Deploying and cleaning'
+        //     }
+        // }
  
     }
     post {
         // Clean after build
         always {
-            cleanWs()
+            sh 'docker compose down --remove-orphans -v'
+            sh 'docker compose ps'
         }
     }
 }
