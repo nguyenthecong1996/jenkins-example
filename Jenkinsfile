@@ -2,6 +2,10 @@ pipeline {
 
     agent any
 
+    tools { 
+        maven 'my-maven' 
+    }
+
     stages {
 
         stage('Packaging/Pushing imagae') {
@@ -16,7 +20,6 @@ pipeline {
         stage('Deploy MySQL to DEV') {
             steps {
                 echo 'Deploying and cleaning'
-            
             }
         }
  
