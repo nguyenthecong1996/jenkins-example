@@ -2,10 +2,6 @@ pipeline {
 
     agent any
 
-    tools { 
-        maven 'my-maven' 
-    }
-
     stages {
 
         stage('Packaging/Pushing imagae') {
